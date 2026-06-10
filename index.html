@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correio Elegante 💌 Terceirão de Informática</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --rose: #e8356b;
+      --rose-light: #f7698a;
+      --rose-pale: #fce4ec;
+      --rose-deep: #b5174a;
+      --cream: #fff5f7;
+      --dark: #2d1520;
+      --mid: #7a3050;
+      --text: #3d1a2a;
+      --card-bg: #ffffffee;
+      --radius: 20px
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 10%, #ffd6e7aa 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, #ffb3cc88 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 60% 30%, #ffe0ec66 0%, transparent 50%)
+    }
+
+    .page {
+      position: relative;
+      z-index: 1
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem
+    }
+
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      color: var(--rose);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 2px 20px #e8356b33
+    }
+
+    header h1 span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      color: var(--mid);
+      display: block;
+      font-weight: 400;
+      margin-top: 0.2rem
+    }
+
+    .header-tagline {
+      font-size: 0.95rem;
+      color: var(--mid);
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem
+    }
+
+    .heart-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem auto;
+      color: var(--rose-light);
+      font-size: 1.2rem
+    }
+
+    .heart-divider::before {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rose-light))
+    }
+
+    .heart-divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--rose-light))
+    }
+
+    .dates-bar {
+      background: var(--rose);
+      color: #fff;
+      text-align: center;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.05em
+    }
+
+    .dates-bar strong {
+      font-size: 1.05rem
+    }
+
+    .section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 0.3rem
+    }
+
+    .section-sub {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.15rem;
+      color: var(--rose);
+      text-align: center;
+      margin-bottom: 1.8rem
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 0.8rem
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1.5px solid #f5c0d088;
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.18s, box-shadow 0.18s;
+      backdrop-filter: blur(4px)
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px #e8356b1a;
+      border-color: var(--rose-light)
+    }
+
+    .pricing-icon {
+      font-size: 1.8rem;
+      min-width: 2.4rem;
+      text-align: center
+    }
+
+    .pricing-info {
+      flex: 1
+    }
+
+    .pricing-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--dark);
+      line-height: 1.3
+    }
+
+    .pricing-desc {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 0.15rem
+    }
+
+    .pricing-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--rose);
+      white-space: nowrap
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #f5c0d0
+    }
+
+    .chip-dark {
+      background: var(--dark);
+      color: #fff;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      white-space: nowrap
+    }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1.5px solid #f5c0d088;
+      border-radius: 28px;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+      max-width: 640px;
+      margin: 0 auto
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      background: #fff8fa;
+      border: 1.5px solid #f5c0d0;
+      border-radius: 14px;
+      padding: 0.7rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px #e8356b18
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6
+    }
+
+    .field-hint {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-top: 0.35rem;
+      font-style: italic
+    }
+
+    /* ── Turma como select ── */
+    select option {
+      color: var(--text)
+    }
+
+    select optgroup {
+      font-weight: 700;
+      color: var(--rose-deep);
+      font-style: normal
+    }
+
+    /* ── Horário ── */
+    .horario-dia-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.35rem
+    }
+
+    .horario-opts-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem
+    }
+
+    .horario-opt {
+      border: 1.5px solid #f5c0d0;
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--mid);
+      background: #fff8fa;
+      transition: all 0.18s;
+      font-weight: 500;
+      white-space: nowrap
+    }
+
+    .horario-opt.selected {
+      border-color: var(--rose);
+      background: #fce4ec;
+      color: var(--rose-deep);
+      font-weight: 600
+    }
+
+    /* ── Reveal genérico — usa JS para mostrar/esconder (sem max-height fixo) ── */
+    .hidden-block {
+      display: none
+    }
+
+    /* ── Local ── */
+    .local-opts {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+      margin-bottom: 0.6rem
+    }
+
+    .local-opt {
+      border: 1.5px solid #f5c0d0;
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--mid);
+      background: #fff8fa;
+      transition: all 0.18s;
+      font-weight: 500
+    }
+
+    .local-opt.selected {
+      border-color: var(--rose);
+      background: #fce4ec;
+      color: var(--rose-deep);
+      font-weight: 600
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 0.6rem
+    }
+
+    /* ── Toggle anônimo ── */
+    .anon-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+      cursor: pointer;
+      user-select: none
+    }
+
+    .toggle-track {
+      width: 46px;
+      height: 26px;
+      background: #f5c0d0;
+      border-radius: 50px;
+      position: relative;
+      transition: background 0.25s;
+      flex-shrink: 0
+    }
+
+    .toggle-track.active {
+      background: var(--rose)
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s;
+      box-shadow: 0 1px 4px #0002
+    }
+
+    .toggle-track.active .toggle-thumb {
+      transform: translateX(20px)
+    }
+
+    .toggle-label {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500
+    }
+
+    /* ── Combos ── */
+    .combos-select-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem
+    }
+
+    .combo-opt {
+      border: 1.5px solid #f5c0d0;
+      border-radius: 12px;
+      padding: 0.65rem 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+      background: #fff8fa;
+      transition: all 0.18s
+    }
+
+    .combo-opt.selected {
+      border-color: var(--rose);
+      background: #fce4ec;
+      color: var(--rose-deep);
+      font-weight: 600
+    }
+
+    .combo-opt .co-emoji {
+      font-size: 1.1rem
+    }
+
+    .combo-opt .co-price {
+      margin-left: auto;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--rose)
+    }
+
+    /* ── Cupido ── */
+    .cupido-opts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.4rem
+    }
+
+    .cupido-opt {
+      border: 1.5px solid #f5c0d0;
+      border-radius: 10px;
+      padding: 0.45rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--mid);
+      background: #fff8fa;
+      transition: all 0.18s;
+      font-weight: 500
+    }
+
+    .cupido-opt.selected {
+      border-color: var(--rose);
+      background: #fce4ec;
+      color: var(--rose-deep);
+      font-weight: 600
+    }
+
+    .total-bar {
+      background: var(--rose-pale);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--mid);
+      margin-top: 0.5rem;
+      font-weight: 500
+    }
+
+    .total-bar .total-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--rose);
+      font-weight: 700
+    }
+
+    /* ── Upload comprovante ── */
+    .upload-area {
+      border: 2px dashed #f5c0d0;
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: center;
+      background: #fff8fa;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative
+    }
+
+    .upload-area:hover {
+      border-color: var(--rose);
+      background: #fce4ec
+    }
+
+    .upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%
+    }
+
+    .upload-icon {
+      font-size: 2rem;
+      margin-bottom: 0.4rem
+    }
+
+    .upload-text {
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-weight: 500
+    }
+
+    .upload-text strong {
+      color: var(--rose)
+    }
+
+    .upload-preview {
+      display: none;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: #fff;
+      border: 1.5px solid #d4edda;
+      border-radius: 10px;
+      margin-top: 0.6rem
+    }
+
+    .upload-preview.show {
+      display: flex
+    }
+
+    .upload-filename {
+      font-size: 0.82rem;
+      color: var(--dark);
+      font-weight: 500;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .upload-remove {
+      background: none;
+      border: none;
+      color: var(--rose);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0
+    }
+
+    /* ── Botão enviar ── */
+    .btn-send {
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem
+    }
+
+    .btn-send:hover {
+      background: var(--rose-deep);
+      transform: translateY(-1px)
+    }
+
+    .btn-send:active {
+      transform: scale(0.98)
+    }
+
+    .btn-send:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #ffffff44;
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* ── Sucesso ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeIn 0.4s ease
+    }
+
+    .success-msg.show {
+      display: block
+    }
+
+    .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem
+    }
+
+    .success-msg h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--rose);
+      margin-bottom: 0.5rem
+    }
+
+    .success-msg p {
+      color: var(--mid);
+      font-size: 0.92rem;
+      line-height: 1.6
+    }
+
+    .order-summary-box {
+      background: #fff;
+      border: 2px solid var(--rose-pale);
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      margin: 1.2rem auto;
+      max-width: 420px;
+      text-align: left
+    }
+
+    .order-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rose-pale);
+      padding-bottom: 0.7rem;
+      margin-bottom: 0.8rem
+    }
+
+    .order-summary-title {
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid)
+    }
+
+    .order-id-pill {
+      background: var(--rose);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.25rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em
+    }
+
+    .order-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem
+    }
+
+    .order-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem
+    }
+
+    .order-row-icon {
+      font-size: 1rem;
+      min-width: 1.4rem
+    }
+
+    .order-row-label {
+      color: var(--mid);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-width: 70px
+    }
+
+    .order-row-val {
+      color: var(--dark);
+      font-weight: 500;
+      flex: 1;
+      line-height: 1.4
+    }
+
+    .order-total-row {
+      border-top: 1px dashed #f5c0d0;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .order-total-label {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em
+    }
+
+    .order-total-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--rose)
+    }
+
+    .order-id-hint {
+      font-size: 0.72rem;
+      color: var(--mid);
+      margin-top: 0.8rem;
+      font-style: italic;
+      text-align: center;
+      border-top: 1px solid var(--rose-pale);
+      padding-top: 0.6rem
+    }
+
+    /* ── Pix ── */
+    .pix-card {
+      background: #fff;
+      border: 1.5px solid #f5c0d0;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      margin: 1rem auto;
+      max-width: 420px;
+      text-align: left
+    }
+
+    .pix-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem
+    }
+
+    .pix-icon {
+      width: 38px;
+      height: 38px;
+      background: #32bcad;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .pix-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark)
+    }
+
+    .pix-sub {
+      font-size: 0.75rem;
+      color: var(--mid)
+    }
+
+    .pix-key-box {
+      background: var(--rose-pale);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.8rem
+    }
+
+    .pix-key-label {
+      font-size: 0.72rem;
+      color: var(--mid);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem
+    }
+
+    .pix-key-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem
+    }
+
+    .pix-key-val {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      word-break: break-all;
+      font-family: monospace;
+      line-height: 1.4
+    }
+
+    .btn-copy {
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .btn-copy:hover {
+      background: var(--rose-deep)
+    }
+
+    .pix-qr-hint {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-bottom: 0.8rem;
+      font-style: italic
+    }
+
+    .pix-amount-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-top: 1px dashed #f5c0d0
+    }
+
+    .pix-amount-label {
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-weight: 600
+    }
+
+    .pix-amount-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--rose)
+    }
+
+    /* ── Comprovante pós-pedido ── */
+    .comprovante-post-card {
+      background: #fff;
+      border: 1.5px solid #f5c0d0;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      margin: 1rem auto;
+      max-width: 420px;
+      text-align: left
+    }
+
+    .comprovante-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem
+    }
+
+    .comprovante-post-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .comprovante-post-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+      line-height: 1.2
+    }
+
+    .comprovante-post-sub {
+      font-size: 0.75rem;
+      color: var(--mid)
+    }
+
+    .btn-send-comprovante {
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem
+    }
+
+    .btn-send-comprovante:hover {
+      background: var(--rose-deep);
+      transform: translateY(-1px)
+    }
+
+    .btn-send-comprovante:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none
+    }
+
+    .comprovante-success-msg {
+      display: none;
+      background: #d4edda;
+      border: 1.5px solid #a3d9a5;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      text-align: center;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #1e7e34;
+      font-weight: 500
+    }
+
+    /* ── WhatsApp (só erros) ── */
+    .whatsapp-card {
+      background: #fff;
+      border: 1.5px solid #d4edda;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      margin: 1rem auto;
+      max-width: 420px;
+      text-align: left
+    }
+
+    .whatsapp-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem
+    }
+
+    .whatsapp-icon {
+      width: 38px;
+      height: 38px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .whatsapp-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+      line-height: 1.2
+    }
+
+    .whatsapp-sub {
+      font-size: 0.75rem;
+      color: var(--mid)
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem
+    }
+
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-1px)
+    }
+
+    /* ── Contato card ── */
+    .contato-card {
+      background: #fff;
+      border: 1.5px solid #f5c0d0;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      margin: 1rem auto;
+      max-width: 420px;
+      text-align: center
+    }
+
+    .contato-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem
+    }
+
+    .contato-card-icon {
+      width: 38px;
+      height: 38px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .contato-card p {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin-bottom: 0.6rem
+    }
+
+    .contato-numero {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rose);
+      letter-spacing: 0.03em
+    }
+
+    .btn-contato-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.6rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem
+    }
+
+    .btn-contato-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-1px)
+    }
+
+    .btn-novo {
+      background: none;
+      border: 1.5px solid var(--rose);
+      color: var(--rose);
+      border-radius: 50px;
+      padding: 0.6rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: all 0.2s;
+      display: inline-block
+    }
+
+    .btn-novo:hover {
+      background: var(--rose);
+      color: #fff
+    }
+
+    .error-msg {
+      display: none;
+      background: #fff0f3;
+      border: 1.5px solid #f5c0d0;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-size: 0.85rem;
+      color: var(--rose-deep);
+      margin-top: 1rem;
+      text-align: center
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-top: 1px solid #f5c0d066
+    }
+
+    .footer-logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 0.3rem
+    }
+
+    .footer-sub {
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.06em
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .note-hint {
+      font-size: 0.78rem;
+      color: #b06080;
+      margin-top: 0.4rem;
+      font-style: italic;
+      line-height: 1.4
+    }
+
+    .sub-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin: 0.8rem 0 0.4rem
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="dates-bar">
+      💌 Pedidos abertos &nbsp;|&nbsp; <strong>Quinta 12/06 e Sexta 13/06</strong> &nbsp;|&nbsp; Terceirão de
+      Informática &lt;/&gt;
+    </div>
+
+    <header>
+      <span class="header-badge">Terceirão de Informática &lt;/&gt;</span>
+      <h1>Correio<span>elegante ♡</span></h1>
+      <div class="heart-divider">💌</div>
+    </header>
+
+    <!-- PREÇOS -->
+    <section class="section">
+      <h2 class="section-title">Tabela de Valores</h2>
+      <p class="section-sub">escolha seu combo ♡</p>
+      <div class="section-divider"><span class="chip-dark">♥ Combos Especiais</span></div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-icon">🎵</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Ofereça uma música</div>
+            <div class="pricing-desc">para a pessoa amada</div>
+          </div>
+          <div class="pricing-price">R$ 3,00</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🍫💌</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Chocolate com cartinha</div>
+          </div>
+          <div class="pricing-price">R$ 4,00</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🍫💌🌹</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Chocolate, cartinha e rosa</div>
+          </div>
+          <div class="pricing-price">R$ 9,00</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🌹🍫</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Rosa e chocolate</div>
+          </div>
+          <div class="pricing-price">R$ 8,00</div>
+        </div>
+        <div class="pricing-card" style="border-color:var(--rose);background:#fce4ec;">
+          <div class="pricing-icon">🎵🍫💌🌹</div>
+          <div class="pricing-info">
+            <div class="pricing-name" style="color:var(--rose-deep);">Combo Completo</div>
+            <div class="pricing-desc">música + chocolate + cartinha + rosa</div>
+          </div>
+          <div class="pricing-price">R$ 10,00</div>
+        </div>
+      </div>
+      <div class="section-divider" style="margin-top:1.8rem;"><span class="chip-dark">♥ Itens Separados</span></div>
+      <p style="text-align:center;font-size:0.82rem;color:var(--mid);font-style:italic;margin-bottom:1rem;">caso queira
+        montar o presente perfeito ♡</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-icon">🌹</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Rosa</div>
+          </div>
+          <div class="pricing-price">R$ 7,00</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🍫</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Chocolate</div>
+          </div>
+          <div class="pricing-price">R$ 3,50</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">💌</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Cartinha</div>
+          </div>
+          <div class="pricing-price">R$ 3,00</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="section" style="padding-top:0;">
+      <h2 class="section-title">Fazer um Pedido</h2>
+      <p class="section-sub">mande aquele recado ♡</p>
+
+      <div class="form-card">
+        <div id="formView">
+
+          <!-- Para quem -->
+          <div class="form-group">
+            <label>Para quem é? 💝</label>
+            <input type="text" id="destinatario" placeholder="Nome completo de quem vai receber..." maxlength="60">
+            <p class="field-hint">⚠️ Escreve o nome completo para não ter confusão na entrega!</p>
+          </div>
+
+          <!-- Turma — select com todas as turmas -->
+          <div class="form-group">
+            <label>Turma de quem vai receber 🏫</label>
+            <!-- ══ EDITE AS TURMAS AQUI ══ -->
+            <select id="turma">
+              <option value="" disabled selected>Selecione a turma de quem vai receber...</option>
+              <optgroup label="3º Ano">
+                <option value="3º Informática">3º Informática</option>
+                <option value="3º Edificação">3º Edificação</option>
+                <option value="3º Química">3º Química</option>
+              </optgroup>
+              <optgroup label="2º Ano">
+                <option value="2º Informática">2º Informática</option>
+                <option value="2º Edificação">2º Edificação</option>
+                <option value="2º Química">2º Química</option>
+              </optgroup>
+              <optgroup label="1º Ano">
+                <option value="1º Informática">1º Informática</option>
+                <option value="1º Edificação">1º Edificação</option>
+                <option value="1º Química">1º Química</option>
+              </optgroup>
+            </select>
+            <!-- ══ FIM DAS TURMAS ══ -->
+            <p class="field-hint">Selecione a turma de quem vai <strong>receber</strong>, não a sua!</p>
+          </div>
+
+          <!-- Horários -->
+          <div class="form-group">
+            <label>Dia e horário de entrega 🕐</label>
+            <!-- ══════════════════════════════════════════
+             EDITE OS HORÁRIOS AQUI
+        ══════════════════════════════════════════ -->
+            <div style="margin-bottom:0.6rem;">
+              <div class="horario-dia-label">📅 Quinta-feira — 12/06 (Manhã)</div>
+              <div class="horario-opts-row">
+                <div class="horario-opt" data-horario="Quinta 12/06 (Manhã) — 07:00 às 08:30"
+                  onclick="selectHorario(this)">7:00 - 8:30</div>
+                <div class="horario-opt" data-horario="Quinta 12/06 (Manhã) — 10:30 às 11:40"
+                  onclick="selectHorario(this)">10:30 - 11:40</div>
+              </div>
+            </div>
+            <div style="margin-bottom:0.6rem;">
+              <div class="horario-dia-label">📅 Quinta-feira — 12/06 (Tarde)</div>
+              <div class="horario-opts-row">
+                <div class="horario-opt" data-horario="Quinta 12/06 (Tarde) — 13:00 às 14:30"
+                  onclick="selectHorario(this)">13:00 - 14:30</div>
+                <div class="horario-opt" data-horario="Quinta 12/06 (Tarde) — 15:00 às 16:30"
+                  onclick="selectHorario(this)">15:00 - 16:30</div>
+              </div>
+            </div>
+            <div style="margin-bottom:0.6rem;">
+              <div class="horario-dia-label">📅 Sexta-feira — 13/06 (Manhã)</div>
+              <div class="horario-opts-row">
+                <div class="horario-opt" data-horario="Sexta 13/06 (Manhã) — 07:00 às 08:30"
+                  onclick="selectHorario(this)">7:00 - 8:30</div>
+                <div class="horario-opt" data-horario="Sexta 13/06 (Manhã) — 09:00 às 10:00"
+                  onclick="selectHorario(this)">9:00 - 10:00</div>
+                <div class="horario-opt" data-horario="Sexta 13/06 (Manhã) — 10:45 às 11:40"
+                  onclick="selectHorario(this)">10:45 - 11:40</div>
+              </div>
+            </div>
+            <div>
+              <div class="horario-dia-label">📅 Sexta-feira — 13/06 (Tarde)</div>
+              <div class="horario-opts-row">
+                <div class="horario-opt" data-horario="Sexta 13/06 (Tarde) — 13:00 às 14:30"
+                  onclick="selectHorario(this)">13:00 - 14:30</div>
+                <div class="horario-opt" data-horario="Sexta 13/06 (Tarde) — 15:00 às 16:30"
+                  onclick="selectHorario(this)">15:00 - 16:30</div>
+              </div>
+            </div>
+            <!-- ══ FIM DOS HORÁRIOS ══ -->
+
+            <!-- Local (aparece após selecionar horário) -->
+            <div id="localBlock" class="hidden-block" style="margin-top:0.4rem;">
+              <div class="sub-label">📍 Local de entrega</div>
+              <div class="local-opts">
+                <div class="local-opt" data-local="Em sala de aula" onclick="selectLocal(this)">🏫 Em sala de aula</div>
+                <div class="local-opt" data-local="No pátio" onclick="selectLocal(this)">🌿 No pátio</div>
+              </div>
+              <!-- Campos de sala (só aparece se escolher sala) -->
+              <div id="salaBlock" class="hidden-block">
+                <div class="two-col">
+                  <div>
+                    <label style="margin-bottom:0.35rem;margin-top:0.4rem;">Aula / Disciplina</label>
+                    <input type="text" id="aulaMateria" placeholder="Ex: Português, Matemática..." maxlength="40">
+                  </div>
+                  <div>
+                    <label style="margin-bottom:0.35rem;margin-top:0.4rem;">Professor(a)</label>
+                    <input type="text" id="aulaProfessor" placeholder="Nome do professor..." maxlength="40">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remetente / Anônimo -->
+          <div class="form-group">
+            <label>Quem envia?</label>
+            <div class="anon-toggle" onclick="toggleAnon()">
+              <div class="toggle-track" id="toggleTrack">
+                <div class="toggle-thumb"></div>
+              </div>
+              <span class="toggle-label" id="toggleLabel">Enviar como <strong>anônimo</strong> 🎭</span>
+            </div>
+            <div id="remetenteBlock" class="hidden-block">
+              <input type="text" id="remetente" placeholder="Seu nome (vai aparecer na cartinha)..." maxlength="60">
+            </div>
+          </div>
+
+          <!-- Combo -->
+          <div class="form-group">
+            <label>Escolha o combo 🎁</label>
+            <div class="combos-select-grid">
+              <div class="combo-opt" data-combo="🎵 Música" data-price="3.00" data-carta="0" data-choc="0"
+                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">🎵</span>Música<span
+                  class="co-price">R$ 3</span></div>
+              <div class="combo-opt" data-combo="🍫💌 Chocolate + Cartinha" data-price="4.00" data-carta="1"
+                data-choc="1" data-musica="0" onclick="selectCombo(this)"><span
+                  class="co-emoji">🍫💌</span>Choc.+Cartinha<span class="co-price">R$ 4</span></div>
+              <div class="combo-opt" data-combo="🍫💌🌹 Choc.+Cartinha+Rosa" data-price="9.00" data-carta="1"
+                data-choc="1" data-musica="0" onclick="selectCombo(this)"><span
+                  class="co-emoji">🍫💌🌹</span>Choc.+Cart.+Rosa<span class="co-price">R$ 9</span></div>
+              <div class="combo-opt" data-combo="🌹🍫 Rosa + Chocolate" data-price="8.00" data-carta="0" data-choc="1"
+                data-musica="0" onclick="selectCombo(this)"><span class="co-emoji">🌹🍫</span>Rosa+Choc.<span
+                  class="co-price">R$ 8</span></div>
+              <div class="combo-opt" data-combo="✨ Combo Completo" data-price="10.00" data-carta="1" data-choc="1"
+                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">✨</span>Combo Completo<span
+                  class="co-price">R$ 10</span></div>
+              <div class="combo-opt" data-combo="custom" data-price="custom" data-carta="custom" data-choc="custom"
+                data-musica="custom" onclick="selectCombo(this)"><span class="co-emoji">🛒</span>Montar meu combo<span
+                  class="co-price">avulso</span></div>
+            </div>
+
+            <!-- Avulsos -->
+            <div id="avulsosBlock" class="hidden-block"
+              style="margin-top:0.8rem;padding:0.8rem;background:#fff8fa;border-radius:12px;border:1.5px dashed #f5c0d0;">
+              <p style="font-size:0.8rem;color:var(--mid);margin-bottom:0.6rem;font-style:italic;">Marque os itens:</p>
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <label
+                  style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
+                    type="checkbox" class="avulso-check" data-price="7" data-name="🌹 Rosa" data-carta="0" data-choc="0"
+                    data-musica="0" onchange="calcAvulso()">🌹 Rosa — R$ 7,00</label>
+                <label
+                  style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
+                    type="checkbox" class="avulso-check" data-price="3.5" data-name="🍫 Chocolate" data-carta="0"
+                    data-choc="1" data-musica="0" onchange="calcAvulso()">🍫 Chocolate — R$ 3,50</label>
+                <label
+                  style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
+                    type="checkbox" class="avulso-check" data-price="3" data-name="💌 Cartinha" data-carta="1"
+                    data-choc="0" data-musica="0" onchange="calcAvulso()">💌 Cartinha — R$ 3,00</label>
+                <label
+                  style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
+                    type="checkbox" class="avulso-check" data-price="3" data-name="🎵 Música" data-carta="0"
+                    data-choc="0" data-musica="1" onchange="calcAvulso()">🎵 Música — R$ 3,00</label>
+              </div>
+            </div>
+
+            <div class="total-bar">
+              <span>Total a pagar:</span>
+              <span class="total-val" id="totalDisplay">R$ —</span>
+            </div>
+          </div>
+
+          <!-- Cupido (aparece quando combo tem chocolate) -->
+          <div id="cupidoBlock" class="hidden-block form-group">
+            <label>Escolha o cupido 💘</label>
+            <p class="field-hint" style="margin-bottom:0.5rem;">Quem você quer que entregue o presente?</p>
+            <!-- ══ EDITE OS CUPIDOS AQUI ══ -->
+            <div class="cupido-opts">
+              <div class="cupido-opt" data-cupido="Fabio" onclick="selectCupido(this)">💘 Fabio</div>
+              <div class="cupido-opt" data-cupido="Keven" onclick="selectCupido(this)">💘 Keven</div>
+              <div class="cupido-opt" data-cupido="Laryanne" onclick="selectCupido(this)">💘 Laryanne</div>
+              <div class="cupido-opt" data-cupido="Ana Alice" onclick="selectCupido(this)">💘 Ana Alice</div>
+              <div class="cupido-opt" data-cupido="Qualquer um" onclick="selectCupido(this)">🎲 Qualquer um</div>
+            </div>
+            <!-- ══ FIM DOS CUPIDOS ══ -->
+          </div>
+
+          <!-- Música (aparece quando combo ou avulso inclui música) -->
+          <div id="musicaBlock" class="hidden-block form-group">
+            <label>Nome da música e artista 🎵</label>
+            <input type="text" id="musicaNome" placeholder="Ex: Amor de Chocolate - Naldo Benny" maxlength="100">
+            <p class="field-hint">Escreva o nome da música e o cantor/banda que deseja enviar!</p>
+          </div>
+
+          <!-- Cartinha (aparece só quando combo inclui cartinha) -->
+          <div id="cartinhaBlock" class="hidden-block form-group" style="margin-bottom:0;">
+            <label>Escreva sua cartinha 💬</label>
+            <textarea id="cartinha"
+              placeholder="Deixe sua mensagem especial... um elogio, uma confissão, um verso, ou só um 'você me faz sorrir' 🥺"></textarea>
+          </div>
+
+          <button class="btn-send" id="btnEnviar" onclick="enviarPedido()">
+            <span id="btnText">💌 Enviar meu correio elegante</span>
+            <div class="spinner" id="spinner"></div>
+          </button>
+          <div class="error-msg" id="errorMsg">Ops! Erro ao enviar. Tente pelo WhatsApp abaixo. 😢</div>
+
+          <!-- WhatsApp visível só em caso de erro -->
+          <div id="zapErroBlock" class="hidden-block" style="margin-top:0.8rem;">
+            <div class="whatsapp-card">
+              <div class="whatsapp-header">
+                <div class="whatsapp-icon">📱</div>
+                <div>
+                  <div class="whatsapp-title">Problemas? Mande pelo WhatsApp</div>
+                  <div class="whatsapp-sub">Use apenas se o formulário não funcionar</div>
+                </div>
+              </div>
+              <a id="btnZapErro" class="btn-whatsapp" href="#" target="_blank" rel="noopener">📲 Abrir WhatsApp — (62)
+                98538-4143</a>
+            </div>
+          </div>
+
+        </div><!-- fim formView -->
+
+        <!-- SUCESSO -->
+        <div class="success-msg" id="successView">
+          <div class="success-icon">💌</div>
+          <h3>Pedido registrado!</h3>
+          <p>Sua mensagem foi recebida com carinho. Agora finalize o pagamento via Pix! 🌹</p>
+
+          <!-- Alerta de instabilidade/erro no Formspree -->
+          <div id="fallbackWarning" class="hidden-block"
+            style="background:#fff3cd; border: 1.5px solid #ffeeba; color: #856404; padding: 1rem; border-radius: 14px; text-align: left; margin: 1rem auto; max-width: 420px; font-size: 0.85rem; line-height: 1.5;">
+            ⚠️ <strong>Atenção:</strong> O servidor de salvamento automático está instável. Mas seu pedido está seguro!
+            Faça o Pix normalmente e, ao enviar o comprovante pelo WhatsApp, a mensagem já incluirá todos os detalhes do
+            seu pedido automaticamente.
+          </div>
+
+          <div class="order-summary-box">
+            <div class="order-summary-header">
+              <span class="order-summary-title">Resumo do Pedido</span>
+              <span class="order-id-pill" id="orderIdPill">—</span>
+            </div>
+            <div class="order-rows">
+              <div class="order-row"><span class="order-row-icon">💝</span><span
+                  class="order-row-label">Para</span><span class="order-row-val" id="sumDestinatario">—</span></div>
+              <div class="order-row"><span class="order-row-icon">🏫</span><span
+                  class="order-row-label">Turma</span><span class="order-row-val" id="sumTurma">—</span></div>
+              <div class="order-row"><span class="order-row-icon">👤</span><span class="order-row-label">De</span><span
+                  class="order-row-val" id="sumRemetente">—</span></div>
+              <div class="order-row"><span class="order-row-icon">🎁</span><span
+                  class="order-row-label">Combo</span><span class="order-row-val" id="sumCombo">—</span></div>
+              <div class="order-row" id="sumMusicaRow"><span class="order-row-icon">🎵</span><span
+                  class="order-row-label">Música</span><span class="order-row-val" id="sumMusica">—</span></div>
+              <div class="order-row" id="sumCupidoRow"><span class="order-row-icon">💘</span><span
+                  class="order-row-label">Cupido</span><span class="order-row-val" id="sumCupido">—</span></div>
+              <div class="order-row"><span class="order-row-icon">🕐</span><span
+                  class="order-row-label">Entrega</span><span class="order-row-val" id="sumHorario">—</span></div>
+            </div>
+            <div class="order-total-row">
+              <span class="order-total-label">💰 Total</span>
+              <span class="order-total-val" id="sumTotal">—</span>
+            </div>
+            <div class="order-id-hint">Guarde o número do pedido — use no Pix e no comprovante 💕</div>
+          </div>
+
+          <!-- Pix -->
+          <div class="pix-card">
+            <div class="pix-card-header">
+              <div class="pix-icon">💚</div>
+              <div>
+                <div class="pix-title">Pague via Pix</div>
+                <div class="pix-sub">Use o código copia e cola abaixo</div>
+              </div>
+            </div>
+            <div class="pix-key-box">
+              <div class="pix-key-label">Pix copia e cola</div>
+              <div class="pix-key-row">
+                <span class="pix-key-val"
+                  id="pixKeyDisplay">00020126580014BR.GOV.BCB.PIX013640b67a28-2c6d-4525-9fc6-994839ae091f5204000053039865802BR5923Luiz
+                  Felipe Felix Sousa6009SAO PAULO62140510o6zaEUYvur63043C54</span>
+                <button class="btn-copy" id="btnCopyPix" onclick="copiarPix()">📋 Copiar</button>
+              </div>
+            </div>
+            <p class="pix-qr-hint">Cole o código no app do seu banco em "Pix copia e cola"</p>
+            <div class="pix-amount-row">
+              <span class="pix-amount-label">Valor:</span>
+              <span class="pix-amount-val" id="pixAmount">—</span>
+            </div>
+          </div>
+
+          <!-- Enviar comprovante (PÓS-PEDIDO via WhatsApp) -->
+          <div class="comprovante-post-card">
+            <div class="comprovante-post-header">
+              <div class="comprovante-post-icon">📎</div>
+              <div>
+                <div class="comprovante-post-title">Enviar comprovante de pagamento</div>
+                <div class="comprovante-post-sub">Mande o print/foto do comprovante pelo WhatsApp</div>
+              </div>
+            </div>
+            <p style="font-size:0.82rem;color:var(--mid);line-height:1.5;margin-bottom:0.8rem;">Após fazer o Pix, clique
+              no botão abaixo para enviar o comprovante. O WhatsApp vai abrir com a mensagem do pedido pronta — é só
+              <strong>anexar a foto/print do comprovante</strong> e enviar! 📸
+            </p>
+            <a class="btn-whatsapp" id="btnZapComprovante" href="#" target="_blank" rel="noopener"
+              style="margin-top:0;">📎 Enviar comprovante pelo WhatsApp</a>
+            <p style="font-size:0.72rem;color:var(--mid);margin-top:0.5rem;font-style:italic;text-align:center;">O
+              WhatsApp vai abrir com o nº do pedido — só anexe o comprovante 💕</p>
+          </div>
+
+          <!-- Contato para erros -->
+          <div class="contato-card">
+            <div class="contato-card-header">
+              <div class="contato-card-icon">📱</div>
+              <div>
+                <div style="font-weight:700;font-size:0.9rem;color:var(--dark);">Algum problema?</div>
+              </div>
+            </div>
+            <p>Se tiver qualquer erro ou dúvida, entre em contato pelo WhatsApp:</p>
+            <div class="contato-numero">(62) 98538-4143</div>
+            <a class="btn-contato-whatsapp"
+              href="https://wa.me/5562985384143?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20meu%20pedido%20do%20Correio%20Elegante%20%F0%9F%92%8C"
+              target="_blank" rel="noopener">📲 Abrir WhatsApp</a>
+          </div>
+
+          <p style="font-size:0.78rem;color:var(--mid);margin-top:0.5rem;font-style:italic;">A entrega será nos dias
+            <strong>12 e 13/06</strong> 💕
+          </p>
+          <button class="btn-novo" onclick="novoPedido()">+ Fazer outro pedido</button>
+        </div><!-- fim successView -->
+
+      </div><!-- fim form-card -->
+    </section>
+
+    <footer>
+      <span class="footer-logo">Correio Elegante ♡</span>
+      <span class="footer-sub">TERCEIRÃO DE INFORMÁTICA &lt;/&gt;</span>
+    </footer>
+  </div>
+
+  <script>
+    /* ═══════════════════════════════════════════
+       CONFIG — edite aqui se precisar
+    ═══════════════════════════════════════════ */
+    const FORMSPREE_URL = "https://formspree.io/f/xykapkke";
+    const WHATSAPP_NUMBER = "5562985384143";
+    const PIX_CODE = "00020126580014BR.GOV.BCB.PIX013640b67a28-2c6d-4525-9fc6-994839ae091f5204000053039865802BR5923Luiz Felipe Felix Sousa6009SAO PAULO62140510o6zaEUYvur63043C54";
+
+    /* ═══════════════════════════════════════════
+       Estado
+    ═══════════════════════════════════════════ */
+    let isAnon = true, selectedCombo = null, comboLabel = '', avulsoTotal = 0;
+    let selectedHorario = null, selectedLocal = null, selectedCupido = null;
+    let cartaNeeded = false, chocNeeded = false, musicaNeeded = false;
+    let currentOrderId = '';
+
+    /* ── helpers ── */
+    function show(id) { document.getElementById(id).classList.remove('hidden-block'); document.getElementById(id).style.display = ''; }
+    function hide(id) { document.getElementById(id).classList.add('hidden-block'); document.getElementById(id).style.display = 'none'; }
+
+    function gerarOrderId() {
+      const n = new Date();
+      return 'CE-' + String(Math.floor(Math.random() * 900) + 100) + '-' + String(n.getDate()).padStart(2, '0') + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getHours()).padStart(2, '0') + String(n.getMinutes()).padStart(2, '0');
+    }
+
+    /* ── Horário ── */
+    function selectHorario(el) {
+      document.querySelectorAll('.horario-opt').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedHorario = el.dataset.horario;
+      show('localBlock');
+      selectedLocal = null;
+      document.querySelectorAll('.local-opt').forEach(o => o.classList.remove('selected'));
+      hide('salaBlock');
+    }
+
+    /* ── Local ── */
+    function selectLocal(el) {
+      document.querySelectorAll('.local-opt').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedLocal = el.dataset.local;
+      if (selectedLocal === 'Em sala de aula') { show('salaBlock'); }
+      else { hide('salaBlock'); document.getElementById('aulaMateria').value = ''; document.getElementById('aulaProfessor').value = ''; }
+    }
+
+    /* ── Anônimo ── */
+    function toggleAnon() {
+      isAnon = !isAnon;
+      const track = document.getElementById('toggleTrack'), label = document.getElementById('toggleLabel');
+      if (isAnon) { track.classList.remove('active'); label.innerHTML = 'Enviar como <strong>anônimo</strong> 🎭'; hide('remetenteBlock'); }
+      else { track.classList.add('active'); label.innerHTML = 'Colocar <strong>meu nome</strong> 💕'; show('remetenteBlock'); }
+    }
+
+    /* ── Cupido ── */
+    function selectCupido(el) {
+      document.querySelectorAll('.cupido-opt').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedCupido = el.dataset.cupido;
+    }
+
+    /* ── Cartinha / Cupido visibilidade ── */
+    function atualizarCamposExtras(temCarta, temChoc, temMusica) {
+      cartaNeeded = temCarta; chocNeeded = temChoc; musicaNeeded = temMusica;
+      if (temCarta) { show('cartinhaBlock'); } else { hide('cartinhaBlock'); document.getElementById('cartinha').value = ''; }
+      if (temChoc) { show('cupidoBlock'); } else { hide('cupidoBlock'); selectedCupido = null; document.querySelectorAll('.cupido-opt').forEach(o => o.classList.remove('selected')); }
+      if (temMusica) { show('musicaBlock'); } else { hide('musicaBlock'); document.getElementById('musicaNome').value = ''; }
+    }
+
+    /* ── Combo ── */
+    function selectCombo(el) {
+      document.querySelectorAll('.combo-opt').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected'); selectedCombo = el;
+      const price = el.dataset.price, carta = el.dataset.carta, choc = el.dataset.choc, musica = el.dataset.musica;
+      if (price === 'custom') { show('avulsosBlock'); calcAvulso(); }
+      else {
+        hide('avulsosBlock');
+        document.querySelectorAll('.avulso-check').forEach(c => c.checked = false);
+        comboLabel = el.dataset.combo;
+        document.getElementById('totalDisplay').textContent = 'R$ ' + parseFloat(price).toFixed(2).replace('.', ',');
+        atualizarCamposExtras(carta === '1', choc === '1', musica === '1');
+      }
+    }
+
+    function calcAvulso() {
+      let total = 0, itens = [], temCarta = false, temChoc = false, temMusica = false;
+      document.querySelectorAll('.avulso-check:checked').forEach(c => {
+        total += parseFloat(c.dataset.price); itens.push(c.dataset.name);
+        if (c.dataset.carta === '1') temCarta = true;
+        if (c.dataset.choc === '1') temChoc = true;
+        if (c.dataset.musica === '1') temMusica = true;
+      });
+      avulsoTotal = total; comboLabel = itens.length > 0 ? '🛒 Avulso: ' + itens.join(' + ') : '';
+      document.getElementById('totalDisplay').textContent = total > 0 ? 'R$ ' + total.toFixed(2).replace('.', ',') : 'R$ —';
+      atualizarCamposExtras(temCarta, temChoc, temMusica);
+    }
+
+    /* ── Comprovante via WhatsApp — link gerado no sucesso ── */
+    function montarLinkComprovante(msgText) {
+      const msg = encodeURIComponent(msgText);
+      document.getElementById('btnZapComprovante').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
+    }
+
+    /* ── Copiar Pix ── */
+    function copiarPix() {
+      navigator.clipboard.writeText(PIX_CODE).then(() => {
+        const b = document.getElementById('btnCopyPix');
+        b.textContent = '✅ Copiado!'; setTimeout(() => b.textContent = '📋 Copiar', 2500);
+      }).catch(() => alert('Código Pix:\n' + PIX_CODE));
+    }
+
+    /* ── Enviar pedido via Formspree ── */
+    async function enviarPedido() {
+      const dest = document.getElementById('destinatario').value.trim();
+      const turma = document.getElementById('turma').value;
+      const carta = document.getElementById('cartinha').value.trim();
+      const rem = document.getElementById('remetente').value.trim();
+      const materia = document.getElementById('aulaMateria').value.trim();
+      const prof = document.getElementById('aulaProfessor').value.trim();
+      const musica = document.getElementById('musicaNome').value.trim();
+
+      if (!dest) { alert('Escreve o nome de quem vai receber! 💝'); return; }
+      if (!turma) { alert('Seleciona a turma de quem vai receber! 🏫'); return; }
+      if (!selectedHorario) { alert('Escolhe o dia e horário! 🕐'); return; }
+      if (!selectedLocal) { alert('Escolhe o local de entrega! 📍'); return; }
+      if (selectedLocal === 'Em sala de aula' && !materia) { alert('Informa a aula/disciplina! 📚'); return; }
+      if (selectedLocal === 'Em sala de aula' && !prof) { alert('Informa o professor(a)! 👩🏫'); return; }
+      if (!selectedCombo) { alert('Escolhe um combo! 🎁'); return; }
+      if (selectedCombo.dataset.price === 'custom' && avulsoTotal === 0) { alert('Marca pelo menos um item! 🛒'); return; }
+      if (!isAnon && !rem) { alert('Escreve seu nome ou ativa o anônimo! 🎭'); return; }
+      if (chocNeeded && !selectedCupido) { alert('Escolhe o cupido da entrega! 💘'); return; }
+      if (musicaNeeded && !musica) { alert('Não esquece de colocar o nome da música e do artista! 🎵'); return; }
+      if (cartaNeeded && !carta) { alert('Não esquece de escrever a cartinha! 💌'); return; }
+
+      const totalNum = selectedCombo.dataset.price === 'custom' ? avulsoTotal : parseFloat(selectedCombo.dataset.price);
+      const totalStr = 'R$ ' + totalNum.toFixed(2).replace('.', ',');
+      let localStr = selectedLocal === 'Em sala de aula' ? 'Em sala — ' + materia + ' | Prof: ' + prof : selectedLocal;
+      const entregaStr = selectedHorario + ' · ' + localStr;
+      const remetenteStr = isAnon ? '🎭 Anônimo' : rem;
+      const orderId = gerarOrderId();
+      currentOrderId = orderId;
+      const cupidoStr = selectedCupido || '—';
+
+      const btn = document.getElementById('btnEnviar'), btnText = document.getElementById('btnText'), spinner = document.getElementById('spinner'), errorEl = document.getElementById('errorMsg');
+      btn.disabled = true; btnText.textContent = 'Enviando...'; spinner.style.display = 'block'; errorEl.style.display = 'none'; hide('zapErroBlock');
+
+      // Monta FormData
+      const fd = new FormData();
+      fd.append('_subject', '💌 Pedido ' + orderId + ' — Para: ' + dest + ' (' + turma + ')');
+      fd.append('📋 Nº do Pedido', orderId);
+      fd.append('💝 Destinatário', dest);
+      fd.append('🏫 Turma', turma);
+      fd.append('👤 Remetente', remetenteStr);
+      fd.append('🎁 Combo', comboLabel);
+      if (musicaNeeded) fd.append('🎵 Música', musica);
+      fd.append('💘 Cupido', cupidoStr);
+      fd.append('💰 Total', totalStr);
+      fd.append('🕐 Entrega', entregaStr);
+      fd.append('💬 Cartinha', carta || '(sem cartinha)');
+
+      // Monta mensagens do WhatsApp (Normal e Fallback)
+      const msgNormal = '📎 *Comprovante — Correio Elegante*\n' +
+        '📋 *Pedido:* ' + orderId + '\n' +
+        '💰 *Valor:* ' + totalStr + '\n\n' +
+        '_Segue o comprovante do Pix em anexo_ 👇';
+
+      let msgFallbackText = '💌 *Correio Elegante — Pedido + Comprovante*\n' +
+        '📋 *Nº:* ' + orderId + '\n' +
+        '💝 *Para:* ' + dest + ' (' + turma + ')\n' +
+        '👤 *De:* ' + remetenteStr + '\n' +
+        '🎁 *Combo:* ' + comboLabel;
+      if (musicaNeeded) msgFallbackText += '\n🎵 *Música:* ' + musica;
+      if (chocNeeded) msgFallbackText += '\n💘 *Cupido:* ' + cupidoStr;
+      if (cartaNeeded) msgFallbackText += '\n💬 *Cartinha:* ' + (carta || '(sem cartinha)');
+      msgFallbackText += '\n💰 *Valor:* ' + totalStr + '\n' +
+        '🕐 *Entrega:* ' + entregaStr + '\n\n' +
+        '_Segue o comprovante do Pix em anexo_ 👇';
+
+      try {
+        const r = await fetch(FORMSPREE_URL, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd });
+        if (r.ok) {
+          hide('fallbackWarning');
+          // Preenche resumo
+          document.getElementById('orderIdPill').textContent = orderId;
+          document.getElementById('sumDestinatario').textContent = dest;
+          document.getElementById('sumTurma').textContent = turma;
+          document.getElementById('sumRemetente').textContent = remetenteStr;
+          document.getElementById('sumCombo').textContent = comboLabel;
+          document.getElementById('sumCupido').textContent = cupidoStr;
+          document.getElementById('sumHorario').textContent = entregaStr;
+          document.getElementById('sumTotal').textContent = totalStr;
+          document.getElementById('pixAmount').textContent = totalStr;
+          if (!chocNeeded) document.getElementById('sumCupidoRow').style.display = 'none';
+          else document.getElementById('sumCupidoRow').style.display = '';
+          document.getElementById('sumMusica').textContent = musica || '—';
+          if (!musicaNeeded) document.getElementById('sumMusicaRow').style.display = 'none';
+          else document.getElementById('sumMusicaRow').style.display = '';
+
+          // Monta link WhatsApp para comprovante
+          montarLinkComprovante(msgNormal);
+
+          document.getElementById('formView').style.display = 'none';
+          document.getElementById('successView').classList.add('show');
+        } else { throw new Error('status ' + r.status); }
+      } catch (err) {
+        console.error(err);
+        // Em caso de erro/limite no Formspree, avança para a tela de sucesso permitindo Pix e WhatsApp
+        show('fallbackWarning');
+
+        document.getElementById('orderIdPill').textContent = orderId;
+        document.getElementById('sumDestinatario').textContent = dest;
+        document.getElementById('sumTurma').textContent = turma;
+        document.getElementById('sumRemetente').textContent = remetenteStr;
+        document.getElementById('sumCombo').textContent = comboLabel;
+        document.getElementById('sumCupido').textContent = cupidoStr;
+        document.getElementById('sumHorario').textContent = entregaStr;
+        document.getElementById('sumTotal').textContent = totalStr;
+        document.getElementById('pixAmount').textContent = totalStr;
+        if (!chocNeeded) document.getElementById('sumCupidoRow').style.display = 'none';
+        else document.getElementById('sumCupidoRow').style.display = '';
+        document.getElementById('sumMusica').textContent = musica || '—';
+        if (!musicaNeeded) document.getElementById('sumMusicaRow').style.display = 'none';
+        else document.getElementById('sumMusicaRow').style.display = '';
+
+        montarLinkComprovante(msgFallbackText);
+
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').classList.add('show');
+      }
+    }
+
+    /* ── Novo pedido ── */
+    function novoPedido() {
+      ['destinatario', 'remetente', 'cartinha', 'aulaMateria', 'aulaProfessor', 'musicaNome'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('turma').selectedIndex = 0;
+      document.querySelectorAll('.combo-opt,.horario-opt,.local-opt,.cupido-opt').forEach(el => el.classList.remove('selected'));
+      document.querySelectorAll('.avulso-check').forEach(c => c.checked = false);
+      ['avulsosBlock', 'localBlock', 'salaBlock', 'cartinhaBlock', 'cupidoBlock', 'remetenteBlock', 'zapErroBlock', 'musicaBlock', 'fallbackWarning'].forEach(id => hide(id));
+      document.getElementById('totalDisplay').textContent = 'R$ —';
+      document.getElementById('errorMsg').style.display = 'none';
+
+      const btn = document.getElementById('btnEnviar');
+      btn.disabled = false; document.getElementById('btnText').textContent = '💌 Enviar meu correio elegante'; document.getElementById('spinner').style.display = 'none';
+      selectedCombo = null; selectedHorario = null; selectedLocal = null; selectedCupido = null;
+      comboLabel = ''; avulsoTotal = 0; cartaNeeded = false; chocNeeded = false; musicaNeeded = false; currentOrderId = '';
+      if (!isAnon) toggleAnon();
+      document.getElementById('successView').classList.remove('show');
+      document.getElementById('formView').style.display = 'block';
+    }
+
+    // Inicializa hidden blocks
+    ['avulsosBlock', 'localBlock', 'salaBlock', 'cartinhaBlock', 'cupidoBlock', 'remetenteBlock', 'zapErroBlock', 'musicaBlock', 'fallbackWarning'].forEach(id => hide(id));
+  </script>
+</body>
+
+</html>
