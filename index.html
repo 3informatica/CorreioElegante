@@ -1237,12 +1237,20 @@
       <div class="section-divider"><span class="chip-dark">♥ Combos Especiais</span></div>
       <div class="pricing-grid">
         <div class="pricing-card">
-          <div class="pricing-icon">🎵</div>
+          <div class="pricing-icon">🔊</div>
           <div class="pricing-info">
-            <div class="pricing-name">Ofereça uma música</div>
-            <div class="pricing-desc">para a pessoa amada</div>
+            <div class="pricing-name">Música na caixa de som</div>
+            <div class="pricing-desc">dedicatória tocada na caixinha</div>
           </div>
-          <div class="pricing-price">R$ 3,00</div>
+          <div class="pricing-price">R$ 1,50</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🎤</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Serenata ao vivo</div>
+            <div class="pricing-desc">com pessoas reais cantando pra você!</div>
+          </div>
+          <div class="pricing-price">R$ 5,00</div>
         </div>
         <div class="pricing-card">
           <div class="pricing-icon">🍫💌</div>
@@ -1266,10 +1274,10 @@
           <div class="pricing-price">R$ 8,00</div>
         </div>
         <div class="pricing-card" style="border-color:var(--rose);background:#fce4ec;">
-          <div class="pricing-icon">🎵🍫💌🌹</div>
+          <div class="pricing-icon">🎤🍫💌🌹</div>
           <div class="pricing-info">
             <div class="pricing-name" style="color:var(--rose-deep);">Combo Completo</div>
-            <div class="pricing-desc">música + chocolate + cartinha + rosa</div>
+            <div class="pricing-desc">serenata ao vivo + chocolate + cartinha + rosa</div>
           </div>
           <div class="pricing-price">R$ 10,00</div>
         </div>
@@ -1298,6 +1306,22 @@
             <div class="pricing-name">Cartinha</div>
           </div>
           <div class="pricing-price">R$ 3,00</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🔊</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Música na caixa de som</div>
+            <div class="pricing-desc">dedicatória tocada na caixinha</div>
+          </div>
+          <div class="pricing-price">R$ 1,50</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-icon">🎤</div>
+          <div class="pricing-info">
+            <div class="pricing-name">Serenata ao vivo</div>
+            <div class="pricing-desc">com pessoas reais!</div>
+          </div>
+          <div class="pricing-price">R$ 5,00</div>
         </div>
       </div>
     </section>
@@ -1430,9 +1454,12 @@
           <div class="form-group">
             <label>Escolha o combo 🎁</label>
             <div class="combos-select-grid">
-              <div class="combo-opt" data-combo="🎵 Música" data-price="3.00" data-carta="0" data-choc="0"
-                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">🎵</span>Música<span
-                  class="co-price">R$ 3</span></div>
+              <div class="combo-opt" data-combo="🔊 Música na caixa de som" data-price="1.50" data-carta="0" data-choc="0"
+                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">🔊</span>Música (caixinha)<span
+                  class="co-price">R$ 1,50</span></div>
+              <div class="combo-opt" data-combo="🎤 Serenata ao vivo" data-price="5.00" data-carta="0" data-choc="0"
+                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">🎤</span>Serenata ao vivo<span
+                  class="co-price">R$ 5</span></div>
               <div class="combo-opt" data-combo="🍫💌 Chocolate + Cartinha" data-price="4.00" data-carta="1"
                 data-choc="1" data-musica="0" onclick="selectCombo(this)"><span
                   class="co-emoji">🍫💌</span>Choc.+Cartinha<span class="co-price">R$ 4</span></div>
@@ -1469,8 +1496,12 @@
                     data-choc="0" data-musica="0" onchange="calcAvulso()">💌 Cartinha — R$ 3,00</label>
                 <label
                   style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
-                    type="checkbox" class="avulso-check" data-price="3" data-name="🎵 Música" data-carta="0"
-                    data-choc="0" data-musica="1" onchange="calcAvulso()">🎵 Música — R$ 3,00</label>
+                    type="checkbox" class="avulso-check" data-price="1.50" data-name="🔊 Música na caixinha" data-carta="0"
+                    data-choc="0" data-musica="1" onchange="calcAvulso()">🔊 Música na caixinha — R$ 1,50</label>
+                <label
+                  style="text-transform:none;font-size:0.88rem;letter-spacing:0;font-weight:500;display:flex;align-items:center;gap:0.5rem;cursor:pointer;"><input
+                    type="checkbox" class="avulso-check" data-price="5" data-name="🎤 Serenata ao vivo" data-carta="0"
+                    data-choc="0" data-musica="1" onchange="calcAvulso()">🎤 Serenata ao vivo — R$ 5,00</label>
               </div>
             </div>
 
@@ -1499,7 +1530,7 @@
           <div id="musicaBlock" class="hidden-block form-group">
             <label>Nome da música e artista 🎵</label>
             <input type="text" id="musicaNome" placeholder="Ex: Amor de Chocolate - Naldo Benny" maxlength="100">
-            <p class="field-hint">Escreva o nome da música e o cantor/banda que deseja enviar!</p>
+            <p class="field-hint">Escreva a música e o cantor/banda que deseja dedicar — vale pra caixinha e pra serenata ao vivo! 🎤🔊</p>
           </div>
 
           <!-- Cartinha (aparece só quando combo inclui cartinha) -->
