@@ -1266,10 +1266,10 @@
           <div class="pricing-price">R$ 8,00</div>
         </div>
         <div class="pricing-card" style="border-color:var(--rose);background:#fce4ec;">
-          <div class="pricing-icon">🍫💌🌹</div>
+          <div class="pricing-icon">🔊🍫💌🌹</div>
           <div class="pricing-info">
             <div class="pricing-name" style="color:var(--rose-deep);">Combo Completo</div>
-            <div class="pricing-desc">chocolate + cartinha + rosa</div>
+            <div class="pricing-desc">música na caixinha + chocolate + cartinha + rosa</div>
           </div>
           <div class="pricing-price">R$ 10,00</div>
         </div>
@@ -1451,7 +1451,7 @@
                 data-musica="0" onclick="selectCombo(this)"><span class="co-emoji">🌹🍫</span>Rosa+Choc.<span
                   class="co-price">R$ 8</span></div>
               <div class="combo-opt" data-combo="✨ Combo Completo" data-price="10.00" data-carta="1" data-choc="1"
-                data-musica="0" onclick="selectCombo(this)"><span class="co-emoji">✨</span>Combo Completo<span
+                data-musica="1" onclick="selectCombo(this)"><span class="co-emoji">✨</span>Combo Completo<span
                   class="co-price">R$ 10</span></div>
               <div class="combo-opt" data-combo="custom" data-price="custom" data-carta="custom" data-choc="custom"
                 data-musica="custom" onclick="selectCombo(this)"><span class="co-emoji">🛒</span>Montar meu combo<span
@@ -1507,7 +1507,10 @@
           <div id="musicaBlock" class="hidden-block form-group">
             <label>Nome da música e artista 🎵</label>
             <input type="text" id="musicaNome" placeholder="Ex: Amor de Chocolate - Naldo Benny" maxlength="100">
-            <p class="field-hint">Escreva a música e o cantor/banda que deseja dedicar — vale pra caixinha e pra serenata ao vivo! 🎤🔊</p>
+            <p class="field-hint">Escreva o nome da música e o cantor/banda que deseja dedicar! 🔊</p>
+            <label style="margin-top:0.9rem;">Trecho favorito da música 🎶</label>
+            <textarea id="musicaTrecho" placeholder="Cole aqui o trecho/letra que mais representa o que você sente... 🎵" maxlength="300" style="min-height:90px;"></textarea>
+            <p class="field-hint">Opcional, mas deixa a dedicatória ainda mais especial! 💕</p>
           </div>
 
           <!-- Cartinha (aparece só quando combo inclui cartinha) -->
@@ -1570,6 +1573,8 @@
                   class="order-row-label">Combo</span><span class="order-row-val" id="sumCombo">—</span></div>
               <div class="order-row" id="sumMusicaRow"><span class="order-row-icon">🎵</span><span
                   class="order-row-label">Música</span><span class="order-row-val" id="sumMusica">—</span></div>
+              <div class="order-row" id="sumTrechoRow"><span class="order-row-icon">🎶</span><span
+                  class="order-row-label">Trecho</span><span class="order-row-val" id="sumTrecho">—</span></div>
               <div class="order-row" id="sumCupidoRow"><span class="order-row-icon">💘</span><span
                   class="order-row-label">Cupido</span><span class="order-row-val" id="sumCupido">—</span></div>
               <div class="order-row"><span class="order-row-icon">🕐</span><span
@@ -1592,11 +1597,10 @@
               </div>
             </div>
             <div class="pix-key-box">
-              <div class="pix-key-label">Pix copia e cola</div>
+              <div class="pix-key-label">Chave Pix (aleatória)</div>
               <div class="pix-key-row">
                 <span class="pix-key-val"
-                  id="pixKeyDisplay">00020126580014BR.GOV.BCB.PIX013640b67a28-2c6d-4525-9fc6-994839ae091f5204000053039865802BR5923Luiz
-                  Felipe Felix Sousa6009SAO PAULO62140510o6zaEUYvur63043C54</span>
+                  id="pixKeyDisplay">830b2ee5-ee70-47ae-a5b4-d66256a49a35</span>
                 <button class="btn-copy" id="btnCopyPix" onclick="copiarPix()">📋 Copiar</button>
               </div>
             </div>
@@ -1662,7 +1666,7 @@
     ═══════════════════════════════════════════ */
     const FORMSPREE_URL = "https://formspree.io/f/xykapkke";
     const WHATSAPP_NUMBER = "5562985384143";
-    const PIX_CODE = "00020126580014BR.GOV.BCB.PIX013640b67a28-2c6d-4525-9fc6-994839ae091f5204000053039865802BR5923Luiz Felipe Felix Sousa6009SAO PAULO62140510o6zaEUYvur63043C54";
+    const PIX_CODE = "830b2ee5-ee70-47ae-a5b4-d66256a49a35";
 
     /* ═══════════════════════════════════════════
        Estado
@@ -1775,6 +1779,7 @@
       const materia = document.getElementById('aulaMateria').value.trim();
       const prof = document.getElementById('aulaProfessor').value.trim();
       const musica = document.getElementById('musicaNome').value.trim();
+      const trecho = document.getElementById('musicaTrecho').value.trim();
 
       if (!dest) { alert('Escreve o nome de quem vai receber! 💝'); return; }
       if (!turma) { alert('Seleciona a turma de quem vai receber! 🏫'); return; }
@@ -1810,6 +1815,7 @@
       fd.append('👤 Remetente', remetenteStr);
       fd.append('🎁 Combo', comboLabel);
       if (musicaNeeded) fd.append('🎵 Música', musica);
+      if (musicaNeeded && trecho) fd.append('🎶 Trecho', trecho);
       fd.append('💘 Cupido', cupidoStr);
       fd.append('💰 Total', totalStr);
       fd.append('🕐 Entrega', entregaStr);
@@ -1827,6 +1833,7 @@
         '👤 *De:* ' + remetenteStr + '\n' +
         '🎁 *Combo:* ' + comboLabel;
       if (musicaNeeded) msgFallbackText += '\n🎵 *Música:* ' + musica;
+      if (musicaNeeded && trecho) msgFallbackText += '\n🎶 *Trecho:* ' + trecho;
       if (chocNeeded) msgFallbackText += '\n💘 *Cupido:* ' + cupidoStr;
       if (cartaNeeded) msgFallbackText += '\n💬 *Cartinha:* ' + (carta || '(sem cartinha)');
       msgFallbackText += '\n💰 *Valor:* ' + totalStr + '\n' +
@@ -1850,8 +1857,10 @@
           if (!chocNeeded) document.getElementById('sumCupidoRow').style.display = 'none';
           else document.getElementById('sumCupidoRow').style.display = '';
           document.getElementById('sumMusica').textContent = musica || '—';
-          if (!musicaNeeded) document.getElementById('sumMusicaRow').style.display = 'none';
-          else document.getElementById('sumMusicaRow').style.display = '';
+        document.getElementById('sumTrecho').textContent = trecho || '—';
+          document.getElementById('sumTrecho').textContent = trecho || '—';
+          if (!musicaNeeded) { document.getElementById('sumMusicaRow').style.display = 'none'; document.getElementById('sumTrechoRow').style.display = 'none'; }
+          else { document.getElementById('sumMusicaRow').style.display = ''; document.getElementById('sumTrechoRow').style.display = trecho ? '' : 'none'; }
 
           // Monta link WhatsApp para comprovante
           montarLinkComprovante(msgNormal);
@@ -1888,7 +1897,7 @@
 
     /* ── Novo pedido ── */
     function novoPedido() {
-      ['destinatario', 'remetente', 'cartinha', 'aulaMateria', 'aulaProfessor', 'musicaNome'].forEach(id => document.getElementById(id).value = '');
+      ['destinatario', 'remetente', 'cartinha', 'aulaMateria', 'aulaProfessor', 'musicaNome', 'musicaTrecho'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('turma').selectedIndex = 0;
       document.querySelectorAll('.combo-opt,.horario-opt,.local-opt,.cupido-opt').forEach(el => el.classList.remove('selected'));
       document.querySelectorAll('.avulso-check').forEach(c => c.checked = false);
